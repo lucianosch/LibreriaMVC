@@ -8,6 +8,7 @@ class Controller{
     public Controller(Model m, View v){
         this.m = m;
         this.v = v;
+        v.init();
         assegnaGestori();
     }
     private void assegnaGestori(){
@@ -19,7 +20,7 @@ class Controller{
             public void actionPerformed(ActionEvent e){
                 String a = (String)v.getAutori().getSelectedItem();
                 m.getLibri(a,null);
-                setView();
+                v.aggiorna();
             }
         };
         v.getAutori().addActionListener(gestoreAutori);
@@ -28,13 +29,9 @@ class Controller{
             public void actionPerformed(ActionEvent e){
                 String g = (String)v.getGeneri().getSelectedItem();
                 m.getLibri(null,g);
-                setView();
+                v.aggiorna();
             }
         };
         v.getGeneri().addActionListener(gestoreGeneri);
-    }
-
-    public void setView(){
-        v.aggiorna();
     }
 }

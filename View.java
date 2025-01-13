@@ -47,11 +47,14 @@ public class View
     public JComboBox<String> getGeneri(){
         return cbGeneri;
     }
-    public void aggiorna(){
+    public void init(){
         for (String a : modello.getAutori())
             cbAutori.addItem(a);
         for (String g : modello.getGeneri())
             cbGeneri.addItem(g); 
+    }
+
+    public void aggiorna(){
         ta.setText("");
         for (String s : modello.getContent())
             ta.append(s);
